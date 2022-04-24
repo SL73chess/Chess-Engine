@@ -21,8 +21,8 @@ public class Board { //all our board specific methods here
         }
     }
     public void makeMove(Move move) { //update board (for moves)
-        board[move.to.rank][move.to.file] = board[move.from.rank][move.from.file];
-        board[move.from.rank][move.from.file] = '-';
+        board[move.newSquare.rank][move.newSquare.file] = board[move.currSquare.rank][move.currSquare.file];
+        board[move.currSquare.rank][move.currSquare.file] = '-';
     }
     public void clearBoard() {
         for (int i = 0; i < 8; i++) {

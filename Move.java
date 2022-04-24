@@ -1,8 +1,8 @@
 public class Move {
-    public Move(Square from, Square to) {
-        this.from = from;
-        this.to = to;
+    public Move(Square currSquare, Square newSquare) {
+        this.currSquare = currSquare;
+        this.newSquare = newSquare;
     }
-    public Square from;
-    public Square to;
+    public Square currSquare;
+    public Square newSquare;
 }
