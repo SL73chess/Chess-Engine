@@ -20,9 +20,9 @@ public class Board { //all our board specific methods here
             System.out.println();
         }
     }
-    public void updateBoard(Square s1, Square s2) { //update board (for moves)
-        board[s2.rank][s2.file] = board[s1.rank][s1.file];
-        board[s1.rank][s1.file] = ' ';
+    public void makeMove(Move move) { //update board (for moves)
+        board[move.to.rank][move.to.file] = board[move.from.rank][move.from.file];
+        board[move.from.rank][move.from.file] = '-';
     }
     public void clearBoard() {
         for (int i = 0; i < 8; i++) {
@@ -66,25 +66,25 @@ public class Board { //all our board specific methods here
 	}
     public String boardToFEN() { //convert board to FEN notation
         String FEN = "";
-        int fileCounter = 0;
+        int emptySq = 0;
         for (int i = 7; i >= 0; i--) {
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == '-') {
-                    fileCounter++;
+                    emptySq++;
                 }
                 else {
-                    if (fileCounter != 0) {
-                        FEN += fileCounter;
-                        fileCounter = 0;
+                    if (emptySq != 0) {
+                        FEN += emptySq;
+                        emptySq = 0;
                     }
                     if (!(board[i][j] == '-')) {
                         FEN += board[i][j];
                     }
                 }
             }
-            if (fileCounter != 0) {
-                FEN += fileCounter;
-                fileCounter = 0;
+            if (emptySq != 0) {
+                FEN += emptySq;
+                emptySq = 0;
             }
             FEN += "/";
         }
